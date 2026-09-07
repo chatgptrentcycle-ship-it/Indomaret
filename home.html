@@ -1,0 +1,556 @@
+<!doctype html>
+<html lang="id">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Indomaret - Belanja Hemat</title>
+
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: Arial, sans-serif;
+            }
+
+            body {
+                background: #ffffff;
+                color: #333;
+            }
+
+            /* HEADER */
+            header {
+                background: linear-gradient(135deg, #d71920, #f5c400);
+                padding: 15px 6%;
+                color: white;
+                position: sticky;
+                top: 0;
+                z-index: 100;
+                box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            }
+
+            .navbar {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 20px;
+            }
+
+            .logo {
+                font-size: 28px;
+                font-weight: 900;
+                background: white;
+                color: #d71920;
+                padding: 8px 15px;
+                border-radius: 8px;
+                text-shadow: 1px 1px #f5c400;
+            }
+
+            .search {
+                flex: 1;
+                max-width: 600px;
+                display: flex;
+            }
+
+            .search input {
+                width: 100%;
+                padding: 13px;
+                border: none;
+                border-radius: 8px 0 0 8px;
+                outline: none;
+                font-size: 15px;
+            }
+
+            .search button {
+                border: none;
+                background: #333;
+                color: white;
+                padding: 0 20px;
+                border-radius: 0 8px 8px 0;
+                cursor: pointer;
+            }
+
+            .cart {
+                font-size: 25px;
+                cursor: pointer;
+            }
+
+            /* HERO */
+            .hero {
+                margin: 25px 6%;
+                min-height: 300px;
+                border-radius: 20px;
+                padding: 45px;
+                display: flex;
+                align-items: center;
+                background: linear-gradient(120deg, #d71920, #ffdf00);
+                color: white;
+                overflow: hidden;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+            }
+
+            .hero h1 {
+                font-size: 45px;
+                margin-bottom: 10px;
+            }
+
+            .hero p {
+                font-size: 20px;
+                margin-bottom: 20px;
+            }
+
+            .btn {
+                display: inline-block;
+                padding: 13px 25px;
+                background: white;
+                color: #d71920;
+                border-radius: 30px;
+                font-weight: bold;
+                text-decoration: none;
+            }
+
+            /* SECTION */
+            .container {
+                width: 88%;
+                margin: 30px auto;
+            }
+
+            .title {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 20px;
+            }
+
+            .title h2 {
+                color: #d71920;
+            }
+
+            /* CATEGORIES */
+            .categories {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+                gap: 15px;
+            }
+
+            .category {
+                background: white;
+                padding: 20px 10px;
+                text-align: center;
+                border-radius: 15px;
+                cursor: pointer;
+                transition: 0.3s;
+                box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+            }
+
+            .category:hover {
+                transform: translateY(-7px);
+                background: #fff5b5;
+            }
+
+            .category .icon {
+                font-size: 40px;
+                margin-bottom: 8px;
+            }
+
+            /* PRODUCTS */
+            .products {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+                gap: 20px;
+            }
+
+            .product {
+                background: white;
+                border-radius: 15px;
+                overflow: hidden;
+                position: relative;
+                box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+                transition: 0.3s;
+            }
+
+            .product:hover {
+                transform: translateY(-7px);
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+            }
+
+            .discount {
+                position: absolute;
+                top: 10px;
+                left: 10px;
+                background: #d71920;
+                color: white;
+                padding: 5px 8px;
+                border-radius: 5px;
+                font-size: 12px;
+                font-weight: bold;
+            }
+
+            .product-img {
+                height: 180px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: #fff8d5;
+                font-size: 80px;
+            }
+
+            .product-info {
+                padding: 15px;
+            }
+
+            .product-info h3 {
+                font-size: 16px;
+                margin-bottom: 8px;
+            }
+
+            .old-price {
+                color: #999;
+                text-decoration: line-through;
+                font-size: 13px;
+            }
+
+            .price {
+                color: #d71920;
+                font-size: 20px;
+                font-weight: bold;
+                margin: 5px 0 12px;
+            }
+
+            .buy {
+                width: 100%;
+                padding: 10px;
+                background: #d71920;
+                color: white;
+                border: none;
+                border-radius: 8px;
+                cursor: pointer;
+                font-weight: bold;
+            }
+
+            .buy:hover {
+                background: #a90008;
+            }
+
+            /* PROMO */
+            .promo {
+                margin-top: 40px;
+                background: linear-gradient(135deg, #ffdf00, #ffb700);
+                padding: 30px;
+                border-radius: 20px;
+                text-align: center;
+            }
+
+            .promo h2 {
+                color: #d71920;
+                font-size: 30px;
+            }
+
+            .promo p {
+                margin: 10px 0 20px;
+                font-size: 17px;
+            }
+
+            /* FOOTER */
+            footer {
+                margin-top: 50px;
+                background: #b50008;
+                color: white;
+                padding: 35px 6%;
+            }
+
+            .footer-content {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 30px;
+            }
+
+            footer h3 {
+                margin-bottom: 12px;
+                color: #ffdf00;
+            }
+
+            footer p {
+                margin: 7px 0;
+            }
+
+            .copyright {
+                text-align: center;
+                border-top: 1px solid rgba(255, 255, 255, 0.3);
+                margin-top: 25px;
+                padding-top: 20px;
+            }
+
+            /* RESPONSIVE */
+            @media (max-width: 700px) {
+                .navbar {
+                    flex-wrap: wrap;
+                }
+
+                .search {
+                    order: 3;
+                    flex-basis: 100%;
+                }
+
+                .hero {
+                    padding: 30px;
+                }
+
+                .hero h1 {
+                    font-size: 32px;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <header>
+            <div class="navbar">
+                <div class="logo">INDOMARET</div>
+
+                <div class="search">
+                    <input type="text" id="searchInput" placeholder="Cari produk, makanan, minuman..." />
+                    <button onclick="searchProduct()">🔍</button>
+                </div>
+
+                <div class="cart">🛒 <span id="cartCount">0</span></div>
+            </div>
+        </header>
+
+        <!-- HERO -->
+        <section class="hero">
+            <div>
+                <h1>Belanja Hemat Setiap Hari!</h1>
+                <p>Promo spesial dan berbagai kebutuhan tersedia untuk kamu.</p>
+                <a href="#produk" class="btn">Belanja Sekarang</a>
+            </div>
+        </section>
+
+        <!-- KATEGORI -->
+        <div class="container">
+            <div class="title">
+                <h2>Kategori Produk</h2>
+            </div>
+
+            <div class="categories">
+                <div class="category">
+                    <div class="icon">🍚</div>
+                    <b>Sembako</b>
+                </div>
+
+                <div class="category">
+                    <div class="icon">🥤</div>
+                    <b>Minuman</b>
+                </div>
+
+                <div class="category">
+                    <div class="icon">🍪</div>
+                    <b>Snack</b>
+                </div>
+
+                <div class="category">
+                    <div class="icon">🧴</div>
+                    <b>Perawatan</b>
+                </div>
+
+                <div class="category">
+                    <div class="icon">🧼</div>
+                    <b>Kebutuhan Rumah</b>
+                </div>
+
+                <div class="category">
+                    <div class="icon">🍜</div>
+                    <b>Makanan</b>
+                </div>
+            </div>
+        </div>
+
+        <!-- PRODUK -->
+        <div class="container" id="produk">
+            <div class="title">
+                <h2>🔥 Produk Promo</h2>
+                <span>Harga terbaik!</span>
+            </div>
+
+            <div class="products">
+                <div class="product">
+                    <span class="discount">-20%</span>
+                    <div
+                        class="https://i1.wp.com/grandlagunashop.com/wp-content/uploads/INDOMIE-GORENG-85G-1.jpg?fit=1000%2C1000&ssl=1"
+                    >
+                        🍜
+                    </div>
+                    <div class="product-info">
+                        <h3>Indomie Goreng</h3>
+                        <div class="old-price">Rp3.500</div>
+                        <div class="price">Rp2.800</div>
+                        <button class="buy" onclick="addCart()">+ Keranjang</button>
+                    </div>
+                </div>
+
+                <div class="product">
+                    <span class="discount">-15%</span>
+                    <div class="product-img">🥛</div>
+                    <div class="product-info">
+                        <h3>Susu UHT 1L</h3>
+                        <div class="old-price">Rp20.000</div>
+                        <div class="price">Rp17.000</div>
+                        <button class="buy" onclick="addCart()">+ Keranjang</button>
+                    </div>
+                </div>
+
+                <div class="product">
+                    <span class="discount">-25%</span>
+                    <div class="product-img">🥤</div>
+                    <div class="product-info">
+                        <h3>Teh Botol</h3>
+                        <div class="old-price">Rp5.000</div>
+                        <div class="price">Rp3.750</div>
+                        <button class="buy" onclick="addCart()">+ Keranjang</button>
+                    </div>
+                </div>
+
+                <div class="product">
+                    <span class="discount">-10%</span>
+                    <div class="product-img">🍫</div>
+                    <div class="product-info">
+                        <h3>Cokelat</h3>
+                        <div class="old-price">Rp12.000</div>
+                        <div class="price">Rp10.800</div>
+                        <button class="buy" onclick="addCart()">+ Keranjang</button>
+                    </div>
+                </div>
+
+                <div class="product">
+                    <span class="discount">-30%</span>
+                    <div class="product-img">🍪</div>
+                    <div class="product-info">
+                        <h3>Biskuit</h3>
+                        <div class="old-price">Rp10.000</div>
+                        <div class="price">Rp7.000</div>
+                        <button class="buy" onclick="addCart()">+ Keranjang</button>
+                    </div>
+                </div>
+
+                <div class="product">
+                    <span class="discount">-15%</span>
+                    <div class="product-img">🧴</div>
+                    <div class="product-info">
+                        <h3>Shampoo</h3>
+                        <div class="old-price">Rp18.000</div>
+                        <div class="price">Rp15.300</div>
+                        <button class="buy" onclick="addCart()">+ Keranjang</button>
+                    </div>
+                </div>
+
+                <div class="product">
+                    <span class="discount">-20%</span>
+                    <div class="product-img">🧼</div>
+                    <div class="product-info">
+                        <h3>Sabun Mandi</h3>
+                        <div class="old-price">Rp8.000</div>
+                        <div class="price">Rp6.400</div>
+                        <button class="buy" onclick="addCart()">+ Keranjang</button>
+                    </div>
+                </div>
+
+                <div class="product">
+                    <span class="discount">-10%</span>
+                    <div class="https://cdn.kibrispdr.org/data/19/beras-5-kg-png-3.png">🍚</div>
+                    <div class="product-info">
+                        <h3>Beras 5 Kg</h3>
+                        <div class="old-price">Rp75.000</div>
+                        <div class="price">Rp67.500</div>
+                        <button class="buy" onclick="addCart()">+ Keranjang</button>
+                    </div>
+                </div>
+
+                <div class="product">
+                    <span class="discount">-18%</span>
+                    <div class="product-img">☕</div>
+                    <div class="product-info">
+                        <h3>Kopi Sachet</h3>
+                        <div class="old-price">Rp3.000</div>
+                        <div class="price">Rp2.460</div>
+                        <button class="buy" onclick="addCart()">+ Keranjang</button>
+                    </div>
+                </div>
+
+                <div class="product">
+                    <span class="discount">-12%</span>
+                    <div class="product-img">🍞</div>
+                    <div class="product-info">
+                        <h3>Roti Tawar</h3>
+                        <div class="old-price">Rp15.000</div>
+                        <div class="price">Rp13.200</div>
+                        <button class="buy" onclick="addCart()">+ Keranjang</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PROMO BESAR -->
+        <div class="container">
+            <div class="promo">
+                <h2>🎉 PROMO SPESIAL HARI INI 🎉</h2>
+                <p>Belanja lebih banyak, dapatkan harga lebih murah! Nikmati berbagai promo menarik setiap hari.</p>
+
+                <a href="#produk" class="btn"> Lihat Semua Promo </a>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <footer>
+            <div class="footer-content">
+                <div>
+                    <h3>Indomaret</h3>
+                    <p>Belanja mudah, cepat dan hemat.</p>
+                    <p>Berbagai kebutuhan tersedia untukmu.</p>
+                </div>
+
+                <div>
+                    <h3>Layanan</h3>
+                    <p>Belanja Online</p>
+                    <p>Promo</p>
+                    <p>Member</p>
+                    <p>Bantuan</p>
+                </div>
+
+                <div>
+                    <h3>Hubungi Kami</h3>
+                    <p>📞 1500-280</p>
+                    <p>📧 customer@contoh.com</p>
+                </div>
+            </div>
+
+            <div class="copyright">© 2026 Website Demo Minimarket</div>
+        </footer>
+
+        <script>
+            let cart = 0;
+
+            function addCart() {
+                cart++;
+                document.getElementById('cartCount').innerText = cart;
+
+                alert('Produk berhasil ditambahkan ke keranjang! 🛒');
+            }
+
+            function searchProduct() {
+                let input = document.getElementById('searchInput').value.toLowerCase();
+
+                let products = document.querySelectorAll('.product');
+
+                products.forEach(function (product) {
+                    let name = product.querySelector('h3').innerText.toLowerCase();
+
+                    if (name.includes(input)) {
+                        product.style.display = 'block';
+                    } else {
+                        product.style.display = 'none';
+                    }
+                });
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,356 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #f5f5f5;
+    color: #333;
+}
+
+/* HEADER */
+header {
+    height: 75px;
+    background: #ed1c24;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 7%;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.logo {
+    background: white;
+    padding: 8px 15px;
+    border-radius: 8px;
+    font-size: 23px;
+    font-weight: bold;
+    color: #ed1c24;
+}
+
+.logo b {
+    color: #0066b3;
+}
+
+nav {
+    display: flex;
+    gap: 30px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #ffd400;
+}
+
+.cart {
+    background: #ffd400;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.cart:hover {
+    background: white;
+}
+
+/* HERO */
+.hero {
+    min-height: 430px;
+    background: linear-gradient(120deg, #ed1c24, #ff3940);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 60px 10%;
+    color: white;
+}
+
+.hero-text h1 {
+    font-size: 50px;
+    line-height: 1.1;
+}
+
+.hero-text h1 span {
+    color: #ffd400;
+}
+
+.hero-text p {
+    margin: 20px 0;
+    font-size: 18px;
+    max-width: 500px;
+}
+
+.btn {
+    display: inline-block;
+    background: #ffd400;
+    color: #222;
+    padding: 14px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.btn:hover {
+    background: white;
+}
+
+.hero-card {
+    width: 280px;
+    height: 280px;
+    background: white;
+    color: #ed1c24;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transform: rotate(3deg);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+}
+
+.discount {
+    background: #ffd400;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.hero-card h2 {
+    font-size: 75px;
+}
+
+.hero-card p {
+    font-weight: bold;
+}
+
+/* SECTION */
+.section {
+    padding: 55px 7%;
+}
+
+.judul {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #ed1c24;
+    font-size: 30px;
+}
+
+/* PROMO */
+.promo-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.promo-box {
+    background: #ed1c24;
+    color: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.promo-box h3 {
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.promo-box p {
+    margin-bottom: 20px;
+}
+
+.promo-box button {
+    border: none;
+    background: white;
+    color: #ed1c24;
+    padding: 10px 18px;
+    border-radius: 7px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.promo-box.kuning {
+    background: #ffd400;
+    color: #222;
+}
+
+.promo-box.kuning button {
+    color: #222;
+}
+
+.promo-box.biru {
+    background: #0066b3;
+}
+
+/* PRODUK */
+.produk-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.produk {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+}
+
+.produk:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.18);
+}
+
+.gambar {
+    height: 130px;
+    background: #f7f7f7;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 70px;
+    margin-bottom: 15px;
+}
+
+.produk h3 {
+    margin-bottom: 10px;
+}
+
+.harga {
+    color: #ed1c24;
+    font-size: 19px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.produk button {
+    width: 100%;
+    padding: 11px;
+    border: none;
+    border-radius: 8px;
+    background: #ed1c24;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.produk button:hover {
+    background: #c81017;
+}
+
+/* FOOTER */
+footer {
+    background: #ed1c24;
+    color: white;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+footer h2 {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+footer span {
+    color: #ffd400;
+}
+
+footer p {
+    margin-top: 8px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    nav {
+        display: none;
+    }
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        gap: 40px;
+    }
+
+    .hero-text h1 {
+        font-size: 40px;
+    }
+
+    .promo-container {
+        grid-template-columns: 1fr;
+    }
+
+    .produk-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 500px) {
+    header {
+        padding: 0 15px;
+    }
+
+    .logo {
+        font-size: 17px;
+    }
+
+    .cart {
+        padding: 9px;
+    }
+
+    .produk-container {
+        grid-template-columns: 1fr;
+    }
+
+    .hero {
+        padding: 40px 20px;
+    }
+
+    .hero-text h1 {
+        font-size: 35px;
+    }
+}
+.checkout-area {
+    text-align: center;
+    margin-top: 40px;
+    padding: 30px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.checkout-area h3 {
+    margin-bottom: 20px;
+    font-size: 22px;
+}
+
+.checkout-btn {
+    background: #ed1c24;
+    color: white;
+    border: none;
+    padding: 14px 30px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.checkout-btn:hover {
+    background: #c81017;
+}
